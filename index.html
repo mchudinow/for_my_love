@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Любимой ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<div class="bg-noise"></div>
+<div class="bg-glow"></div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Для Любимой ❤️</h1>
+    <p class="subtitle">Наша история в цифрах, моментах и чувствах</p>
+    <button class="gold-btn" onclick="startQuiz()">Начать путешествие</button>
+</section>
+
+<!-- QUIZ -->
+<section id="quizSection" class="hidden">
+    <div class="card">
+        <div id="progressBar"></div>
+        <h2 id="questionTitle"></h2>
+        <div id="answersContainer"></div>
+        <input id="textAnswer" class="text-input hidden">
+        <input type="date" id="dateAnswer" class="text-input hidden">
+        <button id="nextBtn" class="gold-btn hidden" onclick="submitAnswer()">Ответить</button>
+        <div id="correctAnswersHint" class="correct-answers-hint hidden"></div>
+    </div>
+</section>
+
+<!-- QUIZ RESULT -->
+<section id="quizResult" class="hidden">
+    <div class="card center">
+        <h2 id="quizResultTitle"></h2>
+        <p id="quizResultText"></p>
+        <button class="gold-btn" onclick="showStats()">Открыть нашу аналитику</button>
+    </div>
+</section>
+
+<!-- STATS -->
+<section id="statsSection" class="hidden">
+    <div class="card">
+        <h2>Наша аналитика</h2>
+
+        <!-- Основная статистика -->
+        <div class="stats-grid-main">
+            <div class="stat-main">
+                <div class="stat-emoji">💬</div>
+                <h3 id="totalMessages"></h3>
+                <p>Сообщений вместе</p>
+            </div>
+            <div class="stat-main">
+                <div class="stat-emoji">👨</div>
+                <h3 id="myMessages"></h3>
+                <p>Мои сообщения</p>
+            </div>
+            <div class="stat-main">
+                <div class="stat-emoji">👩</div>
+                <h3 id="herMessages"></h3>
+                <p>Твои сообщения</p>
+            </div>
+        </div>
+
+        <!-- Кто болтун -->
+        <div id="chattyWinner" class="winner-badge"></div>
+
+        <!-- Детальная статистика -->
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-emoji">🎤</div>
+                <h3 id="myVoice"></h3>
+                <p>Моих голосовых</p>
+            </div>
+            <div class="stat">
+                <div class="stat-emoji">🎙️</div>
+                <h3 id="herVoice"></h3>
+                <p>Твоих голосовых</p>
+            </div>
+            <div class="stat">
+                <div class="stat-emoji">📹</div>
+                <h3 id="myVideo"></h3>
+                <p>Моих кружочков</p>
+            </div>
+            <div class="stat">
+                <div class="stat-emoji">🎬</div>
+                <h3 id="herVideo"></h3>
+                <p>Твоих кружочков</p>
+            </div>
+            <div class="stat">
+                <div class="stat-emoji">😊</div>
+                <h3 id="myEmoji"></h3>
+                <p>Моих эмодзи</p>
+            </div>
+            <div class="stat">
+                <div class="stat-emoji">🥰</div>
+                <h3 id="herEmoji"></h3>
+                <p>Твоих эмодзи</p>
+            </div>
+        </div>
+
+        <!-- Победители по категориям -->
+        <div id="categoryWinners"></div>
+
+        <!-- Время активности -->
+        <div class="time-badge" id="activeTime"></div>
+
+        <!-- Люблю статистика -->
+        <div class="love-stats">
+            <div class="love-stat">
+                <div class="love-emoji">💕</div>
+                <h3 id="myLove"></h3>
+                <p>Я сказал "люблю"</p>
+            </div>
+            <div class="love-stat">
+                <div class="love-emoji">💖</div>
+                <h3 id="herLove"></h3>
+                <p>Ты сказала "люблю"</p>
+            </div>
+        </div>
+
+        <div id="loveWinner" class="winner-badge"></div>
+
+        <!-- Финальное сообщение -->
+        <div class="final-message" id="finalMessage"></div>
+
+        <!-- Графики -->
+        <div class="chart-container">
+            <h3>📊 Рост нашего общения</h3>
+            <canvas id="growthChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3>⏰ Когда мы общаемся</h3>
+            <canvas id="hourChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3>💕 Кто чаще говорит "люблю"</h3>
+            <canvas id="loveChart"></canvas>
+        </div>
+
+        <!-- Топ эмодзи -->
+        <div class="top-section">
+            <h3>🎭 Наши любимые эмодзи</h3>
+            <div class="top-grid">
+                <div class="top-column">
+                    <h4>Maksim</h4>
+                    <div id="myTopEmoji"></div>
+                </div>
+                <div class="top-column">
+                    <h4>Любимая ❤️</h4>
+                    <div id="herTopEmoji"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Топ слов -->
+        <div class="top-section">
+            <h3>💬 Наши любимые слова</h3>
+            <div class="top-grid">
+                <div class="top-column">
+                    <h4>Maksim</h4>
+                    <div id="myTopWords"></div>
+                </div>
+                <div class="top-column">
+                    <h4>Любимая ❤️</h4>
+                    <div id="herTopWords"></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="gold-btn" onclick="showFinalPage()" style="margin-top: 50px;">Далее →</button>
+    </div>
+</section>
+
+<!-- FINAL PAGE -->
+<section id="finalPage" class="hidden">
+    <div class="card center">
+        <h1 style="font-size: 48px; margin-bottom: 30px;">Урааа!! Ты дошла до конца! 🎉</h1>
+        <p style="font-size: 24px; margin-bottom: 20px;">На самом деле, этот сайт - еще одна возможность сказать тебе о моих чувтсвах 😍</p>
+        <div class="gif-container">
+            <img src="assets/img/we.gif" alt="celebration" style="max-width: 400px; border-radius: 15px; margin: 20px;">
+        </div>
+        <button class="gold-btn" onclick="goBackToStats()">← Назад к статистике</button>
+    </div>
+</section>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
