@@ -23,7 +23,7 @@ const questions = [
     { type: "multiple", question: "Где было первое свидание?", answers: ["Парк", "Университет", "Кофейня", "Кино"], correct: [2] },
     { type: "text", question: "А где могло быть наше первое свидание?", correctTexts: [], comment: "На баскетбольной площадке))" },
     { type: "multiple", question: "Сколько дней длились мои сборы?", answers: ["34", "35", "31", "27"], correct: [], comment: "35 ДНЕЙ БЕЗУМНОГО МАКСА" },
-    { type: "multiple", question: "Как зовут моего кота?", answers: ["Семен", "Степан", "Штефан", "Кузя"], correct: [], comment: "Ну это надо знать..." },
+    { type: "multiple", question: "Как зовут моего кота?", answers: ["Семен", "Степан", "Штефан", "Кузя"], correct: [1], comment: "Ну это надо знать..." },
     { type: "multiple", question: "А как твою кошку?", answers: ["Лиля", "Ляля"], correct: [0], comment: "Когда-нибудь она меня полюбит)'" },
     { type: "multiple", question: "Какую песню мы очень любим?", answers: ["Ариана гранде", "Адель", "Канье Вест", "Imagine Dragons"], correct: [], comment: "Я тебя бум бум бум" },
     { type: "text", question: "Какой наш фирменный напиток?", correctTexts: [], comment: "Настойка на банане))" },
